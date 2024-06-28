@@ -31,7 +31,7 @@ main()
         console.log(err);
     });
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/whiteboard');
+    await mongoose.connect('mongodb+srv://harshit:12345@cluster0.znmuror.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 };
 
 io.on('connection', (socket) => {
