@@ -5,8 +5,9 @@ export default defineConfig({
   server:{
     proxy:{
       '/api':{
-        target:'http://localhost:8080',
-        secure:false
+        target:'https://white-board-sharing-app-n497.vercel.app/',
+        secure:true,
+        changeOrigin:true
       },
     },
   },
