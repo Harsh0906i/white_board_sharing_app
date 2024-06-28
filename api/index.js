@@ -42,6 +42,9 @@ io.on('connection', (socket) => {
         socket.broadcast.to(roomid).emit('whiteboardDataResponse', data); // Emit only to the specified room
     });
 });
+app.get('/',(req,res)=>{
+    res.send('working!');
+})
 
 server.listen(8080, () => {
     console.log('Server is working on port 8080');
