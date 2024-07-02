@@ -37,6 +37,7 @@ async function main() {
 };
 
 io.on('connection', (socket) => {
+    console.log('connected successfully');
     socket.on('roomInfo', (roomid) => {
         socket.join(roomid);
     });

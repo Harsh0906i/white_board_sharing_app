@@ -5,7 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkHost } from '../redux/userSlice';
 
-const socket = io('https://white-board-sharing-app-n497.vercel.app');
+const socket = io('https://white-board-sharing-app-n497.vercel.app', {
+    transports: ['websocket', 'polling'], // Ensure correct transports
+    withCredentials: true, // Necessary for cross-origin requests
+    timeout: 20000, // Set a timeout for connection attempts
+});
 
 export default function Forms() {
     const { currentUser } = useSelector((state) => state.user1);
@@ -90,6 +94,7 @@ export default function Forms() {
 
         return () => clearTimeout(timer);
     }, [item]);
+
 
     return (
         <div className='sm:flex items-center h-screen p-3'>
