@@ -5,7 +5,10 @@ import io from 'socket.io-client';
 import { useSelector } from 'react-redux';
 
 export default function Roompage() {
-    const socket = io('https://white-board-sharing-app-n497.vercel.app');
+    const socket = io('https://white-board-sharing-app-n497.vercel.app', {
+        transports: ['websocket', 'polling'], // Ensure correct transports
+        withCredentials: true, // Necessary for cross-origin requests
+    });
     const [tool, setTool] = useState("pencil");
     const [color, setColor] = useState("#000000");
     const [elements, setElements] = useState([]);

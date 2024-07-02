@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
     });
     socket.on('joined', (data) => {
         console.log('server side', data);
-    })
+    });
 });
 
 app.get('/', (req, res) => {

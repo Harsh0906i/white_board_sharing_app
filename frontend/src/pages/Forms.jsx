@@ -5,11 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkHost } from '../redux/userSlice';
 
-const socket = io('https://white-board-sharing-app-n497.vercel.app', {
-    transports: ['websocket', 'polling'], // Ensure correct transports
-    withCredentials: true, // Necessary for cross-origin requests
-    timeout: 20000, // Set a timeout for connection attempts
-});
+const socket = io('https://white-board-sharing-app-n497.vercel.app');
 
 export default function Forms() {
     const { currentUser } = useSelector((state) => state.user1);
@@ -51,7 +47,7 @@ export default function Forms() {
         if (D.success === true) {
             setcreateload(false)
             dispatch(checkHost(true));
-            socket.emit('joined','created room suuuccfully ')
+            socket.emit('joined', 'created room suuuccfully ')
             navigate(`/${data.roomid}`);
         }
         setcreateload(false)
@@ -96,6 +92,10 @@ export default function Forms() {
 
         return () => clearTimeout(timer);
     }, [item]);
+
+    useEffect(()=>{
+        socket.emit('joined', 'created room suuuccfully ')
+    },[])
 
 
     return (
