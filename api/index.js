@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const http = require('http');
@@ -7,7 +8,7 @@ const app = express();
 const server = http.createServer(app);
 const mongoose = require('mongoose')
 const userRouter = require('./routes/user')
-const authRouter=require('./routes/auth')
+const authRouter = require('./routes/auth')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -31,21 +32,21 @@ main()
         console.log(err);
     });
 async function main() {
-    await mongoose.connect('mongodb+srv://harshit:12345@cluster0.znmuror.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+    await mongoose.connect(process.env.MONGOURI);
 };
 
 io.on('connection', (socket) => {
     socket.on('roomInfo', (roomid) => {
-        socket.join(roomid); // Join the specified room
+        socket.join(roomid);
     });
     socket.on('whiteboardData', (data, roomid) => {
-        socket.broadcast.to(roomid).emit('whiteboardDataResponse', data); // Emit only to the specified room
+        socket.broadcast.to(roomid).emit('whiteboardDataResponse', data);
     });
 });
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.send('working!');
 })
 
-server.listen(8080, () => {
+server.listen(8000, () => {
     console.log('Server is working on port 8080');
 });

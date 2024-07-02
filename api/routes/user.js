@@ -5,6 +5,7 @@ const userSchema = require('../models/user')
 
 router.post('/host', async (req, res) => {
     const { name, roomid, presenter, host } = req.body;
+    console.log(name)
     const newUser = new userSchema({
         name,
         roomId: roomid,

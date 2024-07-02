@@ -25,9 +25,6 @@ const userSlice = createSlice({
         checkHost: (state, action) => {
             state.host = action.payload;
         }
-
-
-
     }
 });
 
