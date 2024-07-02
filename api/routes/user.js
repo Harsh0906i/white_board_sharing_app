@@ -36,7 +36,7 @@ router.post('/student', async (req, res) => {
         });
 
         await newUser.save();
-        return res.status(201).json({ message: 'Room created successfully', success: true });
+        return res.status(201).json({ message: 'Room joined successfully', success: true });
 
     } catch (error) {
         console.error(error); // Log the error for debugging
