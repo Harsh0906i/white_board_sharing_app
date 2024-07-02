@@ -40,10 +40,14 @@ io.on('connection', (socket) => {
     console.log('connected successfully');
     socket.on('roomInfo', (roomid) => {
         socket.join(roomid);
+        console.log('connected to roomid')
     });
     socket.on('whiteboardData', (data, roomid) => {
         socket.broadcast.to(roomid).emit('whiteboardDataResponse', data);
     });
+    socket.on('joined', (data) => {
+        console.log('server side', data);
+    })
 });
 
 app.get('/', (req, res) => {

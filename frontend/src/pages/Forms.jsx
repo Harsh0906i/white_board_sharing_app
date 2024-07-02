@@ -51,9 +51,11 @@ export default function Forms() {
         if (D.success === true) {
             setcreateload(false)
             dispatch(checkHost(true));
+            socket.emit('joined','created room suuuccfully ')
             navigate(`/${data.roomid}`);
         }
         setcreateload(false)
+
     }
 
     async function handlejoinSubmit(e) {
