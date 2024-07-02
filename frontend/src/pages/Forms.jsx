@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkHost } from '../redux/userSlice';
 
-const socket = io('http://localhost:8000');
+const socket = io('https://white-board-sharing-app-n497.vercel.app');
 
 export default function Forms() {
     const { currentUser } = useSelector((state) => state.user1);

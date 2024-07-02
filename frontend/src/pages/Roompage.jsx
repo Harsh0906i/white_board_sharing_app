@@ -2,10 +2,10 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import rough from 'roughjs';
 import io from 'socket.io-client';
-const socket = io('http://localhost:8000/');
 import { useSelector } from 'react-redux';
 
 export default function Roompage() {
+    const socket = io('https://white-board-sharing-app-n497.vercel.app');
     const [tool, setTool] = useState("pencil");
     const [color, setColor] = useState("#000000");
     const [elements, setElements] = useState([]);

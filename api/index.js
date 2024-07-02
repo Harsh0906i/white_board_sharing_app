@@ -18,9 +18,9 @@ app.use('/api/auth', authRouter)
 
 const io = new Server(server, {
     cors: {
-        origin: '*',
+        origin: 'http://localhost:5173/',
         methods: ['GET', 'POST'],
-        allowedHeaders: ['Authorization'],
+        allowedHeaders: ['Authorization','Content-Type'],
         credentials: true
     }
 });
