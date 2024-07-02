@@ -161,10 +161,13 @@ export default function Forms() {
                                 Copy
                             </button>
                         </div>
-
-                        <button type="submit" className='rounded-lg bg-slate-500 text-white px-3 p-1 pr-2 pl-2 hover:opacity-90'>
-                            {createload ? 'Creating...' : 'Create'}
-                        </button>
+                        {
+                            currentUser ?
+                                <button type="submit" className='rounded-lg bg-slate-500 text-white px-3 p-1 pr-2 pl-2 hover:opacity-90'>
+                                    {createload ? 'Creating...' : 'Create'}
+                                </button> :
+                                <Link className='flex items-center justify-center bg-gray-600 py-1 text-white rounded-lg cursor-pointer w-full' to={'/signup'}>Signin</Link>
+                        }
                     </div>
                 </form>
             </div>
